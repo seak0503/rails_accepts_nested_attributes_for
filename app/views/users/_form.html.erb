@@ -1,0 +1,42 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :addresses, "住所" %><br>
+    <%= f.fields_for :addresses do |addresses_form| %>
+      <%= addresses_form.label :zipcode, "郵便番号" %>
+      <%= addresses_form.text_field :zipcode %><br />
+      <%= addresses_form.label :city, "都道府県" %>
+      <%= addresses_form.text_field :city %><br />
+      <%= addresses_form.label :street, "市町村番" %>
+      <%= addresses_form.text_field :street %><br />
+      <%= addresses_form.label :tel, "電話番号" %>
+      <%= addresses_form.text_field :tel %><br />
+      <% if @user.persisted? %>
+        <%= addresses_form.check_box :_destroy %>
+        <%= addresses_form.label :_destroy, "削除" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
