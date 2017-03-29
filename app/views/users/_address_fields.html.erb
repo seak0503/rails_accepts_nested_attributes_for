@@ -1,0 +1,14 @@
+<fieldset>
+  <%= f.label :zipcode, "郵便番号" %>
+  <%= f.text_field :zipcode %><br />
+  <%= f.label :city, "都道府県" %>
+  <%= f.text_field :city %><br />
+  <%= f.label :street, "市町村番" %>
+  <%= f.text_field :street %><br />
+  <%= f.label :tel, "電話番号" %>
+  <%= f.text_field :tel %><br />
+  <% if @user.persisted? %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "削除" %>
+  <% end %>
+</fieldset>
