@@ -7,8 +7,6 @@
   <%= f.text_field :street %><br />
   <%= f.label :tel, "電話番号" %>
   <%= f.text_field :tel %><br />
-  <% if @user.persisted? %>
-    <%= f.check_box :_destroy %>
-    <%= f.label :_destroy, "削除" %>
-  <% end %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "削除", '#', class: "remove_fields" %>
 </fieldset>
