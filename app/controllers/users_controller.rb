@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.addresses.build
+    @user.tasks.build
   end
 
   # GET /users/1/edit
@@ -73,7 +74,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(
         :username,
         :age,
-        addresses_attributes: [:id, :zipcode, :city, :street, :tel, :_destroy]
+        addresses_attributes: [:id, :zipcode, :city, :street, :tel, :_destroy],
+        tasks_attributes: [:id, :title]
       )
     end
 end
