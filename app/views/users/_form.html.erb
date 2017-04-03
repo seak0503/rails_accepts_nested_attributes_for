@@ -29,8 +29,9 @@
   <div class="field">
     <%= f.label :tasks, "タスク" %><br>
     <%= f.fields_for :tasks do |ff| %>
-      <%= ff.select :title, Task::TITLES, {include_blank: false} %>
+      <%= ff.select :select_title, Task::TITLES, {include_blank: false} %>
     <% end %>
+    <%= hide_add_fields f, :tasks %>
   </div>
   <div class="actions">
     <%= f.submit %>
