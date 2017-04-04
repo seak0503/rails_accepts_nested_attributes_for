@@ -12,4 +12,11 @@ $(function () {
     $this.before($this.data('fields').replace(regexp, time));
     event.preventDefault();
   });
+  $('form').on('change', 'select', function (event) {
+    var $this = $(this),
+      time = new Date().getTime(),
+      regexp = new RegExp($this.next().attr('id'), 'g');
+    $this.next().replace(regexp, time);
+    event.preventDefault();
+  });
 });
