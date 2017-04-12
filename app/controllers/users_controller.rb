@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    params[:user][:tasks_attributes].delete_if { |key, task| task[:title].blank? }
     @user = User.new(user_params)
 
     respond_to do |format|
