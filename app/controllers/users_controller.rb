@@ -75,6 +75,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(
         :username,
         :age,
+        :select_title => [],
         addresses_attributes: [:id, :zipcode, :city, :street, :tel, :_destroy],
         tasks_attributes: [:id, :title]
       )

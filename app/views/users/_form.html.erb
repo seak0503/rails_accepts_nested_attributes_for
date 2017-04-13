@@ -28,7 +28,7 @@
   </div>
   <div class="field">
     <%= f.label :tasks, "タスク" %><br>
-    <%= f.select :select_title, Task::TITLES, {include_blank: false} %>
+    <%= f.select :select_title, Task::TITLES, {include_blank: false}, multiple: true %>
     <%= f.fields_for :tasks do |ff| %>
       <%= ff.hidden_field :title, "data-id" => 0 %><br />
     <% end %>
