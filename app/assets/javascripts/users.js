@@ -14,15 +14,19 @@ $(function () {
   });
   $('form').on('change', 'select', function (event) {
     var $this = $(this),
-      $next = $this.next(),
-      time = new Date().getTime(),
-      regexp = new RegExp($next.data('id'), 'g');
-      id = $next.attr('id'),
-      name = $next.attr('name'),
-      newId = id.replace(regexp, time),
-      newName = name.replace(regexp, time),
-      newInput = $('<input type="hidden">').attr('id', newId).attr('name', newName).val($this.val());
-    $next.after(newInput);
+      vals = $this.val(),
+      $next = $this.next();
+    $this.siblings(".hige").remove();
+    $.each(vals, function (i, val) {
+      var time = new Date().getTime(),
+        regexp = new RegExp($next.data('id'), 'g'),
+        id = $next.attr('id'),
+        name = $next.attr('name'),
+        newId = id.replace(regexp, time),
+        newName = name.replace(regexp, time);
+      $next.after($('<input type="hidden">').attr('id', newId).attr('name', newName).val(val).addClass("hige"));
+    });
     event.preventDefault();
+
   });
 });
