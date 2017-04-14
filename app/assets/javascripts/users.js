@@ -16,7 +16,13 @@ $(function () {
     var $this = $(this),
       vals = $this.val(),
       $next = $this.next();
-    $this.siblings(".hige").remove();
+    $this.siblings(".from-select-to-hidden").each(function (i) {
+      if (i == 0) {
+        $(this).val("");
+      } else {
+        $(this).remove();
+      }
+    });
     $.each(vals, function (i, val) {
       var time = new Date().getTime(),
         regexp = new RegExp($next.data('id'), 'g'),
@@ -24,7 +30,7 @@ $(function () {
         name = $next.attr('name'),
         newId = id.replace(regexp, time),
         newName = name.replace(regexp, time);
-      $next.after($('<input type="hidden">').attr('id', newId).attr('name', newName).val(val).addClass("hige"));
+      $next.after($('<input type="hidden">').attr('id', newId).attr('name', newName).val(val).addClass("from-select-to-hidden"));
     });
     event.preventDefault();
 
