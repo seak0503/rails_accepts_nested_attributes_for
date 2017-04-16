@@ -29,11 +29,27 @@
   <div class="field">
     <%= f.label :tasks, "タスク" %><br>
     <%= f.select :select_title, User::TITLES, {include_blank: false}, multiple: true %>
-    <%= f.fields_for :tasks do |ff| %>
-      <%= ff.hidden_field :title, class: "from-select-to-hidden", "data-id" => 0 %><br />
-    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  $(function () {
+    $('form').on('change', 'select', function () {
+      $(this).railsAcceptsNestedAttributesForForm({
+        'object'      : 'user',
+        'association' : 'tasks',
+        'parameter'   : 'title'
+      });
+    });
+    $(window).load(function () {
+      $("form select").railsAcceptsNestedAttributesForForm({
+        'object'      : 'user',
+        'association' : 'tasks',
+        'parameter'   : 'title'
+      });
+    });
+  });
+</script>

@@ -12,27 +12,4 @@ $(function () {
     $this.before($this.data('fields').replace(regexp, time));
     event.preventDefault();
   });
-  $('form').on('change', 'select', function (event) {
-    var $this = $(this),
-      vals = $this.val(),
-      $next = $this.next();
-    $this.siblings(".from-select-to-hidden").each(function (i) {
-      if (i == 0) {
-        $(this).val("");
-      } else {
-        $(this).remove();
-      }
-    });
-    $.each(vals, function (i, val) {
-      var time = new Date().getTime(),
-        regexp = new RegExp($next.data('id'), 'g'),
-        id = $next.attr('id'),
-        name = $next.attr('name'),
-        newId = id.replace(regexp, time),
-        newName = name.replace(regexp, time);
-      $next.after($('<input type="hidden">').attr('id', newId).attr('name', newName).val(val).addClass("from-select-to-hidden"));
-    });
-    event.preventDefault();
-
-  });
 });
