@@ -29,6 +29,10 @@ $.fn.extend({
             name = settings.object + "[" + settings.association + "_attributes][" + i + "][" + settings.parameter + "]";
           $this.after($('<input type="hidden">').attr('id', id).attr('name', name).val(val).addClass(className));
         });
+      } else {
+        var id = settings.object + "_" + settings.association + "_attributes_0_" + settings.parameter,
+          name = settings.object + "[" + settings.association + "_attributes][0][" + settings.parameter + "]";
+          $this.after($('<input type="hidden">').attr('id', id).attr('name', name).addClass(className));
       }
       event.preventDefault();
     }
