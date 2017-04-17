@@ -38,14 +38,14 @@
 <script>
   $(function () {
     $('form').on('change', 'select', function () {
-      $(this).railsAcceptsNestedAttributesForForm({
+      $(this).railsAcceptsNestedAttributesForSelectToHidden({
         'object'      : 'user',
         'association' : 'tasks',
         'parameter'   : 'title'
       });
     });
     $(window).load(function () {
-      $("form select").railsAcceptsNestedAttributesForForm({
+      $("form select").railsAcceptsNestedAttributesForSelectToHidden({
         'object'      : 'user',
         'association' : 'tasks',
         'parameter'   : 'title'
