@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
   validates :age, presence: true
+  validates :select_title, presence: true
 end
