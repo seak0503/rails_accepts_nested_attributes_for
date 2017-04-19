@@ -1,0 +1,51 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :addresses, "住所" %><br>
+    <%= f.fields_for :addresses do |builer| %>
+      <%= render "address_fields", f: builer %>
+    <% end %>
+    <%= link_to_add_fields "住所追加", f, :addresses  %>
+  </div>
+  <% if f.object.new_record? %>
+    <div class="field">
+      <%= f.label :tasks, "タスク" %><br>
+      <%= f.select :select_title, User::TITLES, {include_hidden: false}, multiple: true %>
+    </div>
+    <script>
+      $(function () {
+        $('#user_select_title').railsAcceptsNestedAttributesForSelectToHidden({
+          'object'      : 'user',
+          'association' : 'tasks',
+          'parameter'   : 'title'
+        });
+        $('#user_select_title').select2({
+          width:      200
+        });
+      });
+    </script>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
