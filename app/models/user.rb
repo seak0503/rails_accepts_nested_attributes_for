@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :tasks
   has_many :entries
   has_many :events, through: :entries
+  accepts_nested_attributes_for :entries
+  accepts_nested_attributes_for :events
 
   validates :username, presence: true
   validates :age, presence: true
