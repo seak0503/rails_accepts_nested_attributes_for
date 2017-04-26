@@ -10,5 +10,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 #gem 'jquery-turbolinks'
 gem "select2-rails"
+gem 'hirb'
+gem 'hirb-unicode'
+gem 'pry-rails'
+gem 'pry-doc'
+gem 'pry-byebug'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development

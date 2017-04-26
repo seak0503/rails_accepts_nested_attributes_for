@@ -46,9 +46,7 @@
   <% end %>
   <div class="field">
     <%= f.label :events, "イベント" %><br>
-    <%= f.fields_for :entries do |builder| %>
-      <%= builder.collection_select :event_ids, Event.all, :id, :name, multiple: true %>
-    <% end %>
+    <%= f.collection_select :event_ids, Event.all, :id, :name, { }, multiple: true%>
   </div>
   <div class="actions">
     <%= f.submit %>

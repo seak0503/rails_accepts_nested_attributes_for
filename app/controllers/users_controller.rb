@@ -76,7 +76,8 @@ class UsersController < ApplicationController
         :age,
         :select_title => [],
         addresses_attributes: [:id, :zipcode, :city, :street, :tel, :_destroy],
-        tasks_attributes: [:id, :title]
+        tasks_attributes: [:id, :title],
+        event_ids: []
       )
     end
 end
