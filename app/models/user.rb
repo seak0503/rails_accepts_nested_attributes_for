@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :addresses, allow_destroy: true, reject_if: :all_blank
   has_many :tasks
   accepts_nested_attributes_for :tasks
+  has_many :entries
+  has_many :events, through: :entries
 
   validates :username, presence: true
   validates :age, presence: true
-  validates :select_title, presence: true
+  validates :select_title, presence: true, on: :create
 end

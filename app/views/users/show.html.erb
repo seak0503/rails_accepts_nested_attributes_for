@@ -10,5 +10,29 @@
   <%= @user.age %>
 </p>
 
+<% @user.addresses.each_with_index do |address, i| %>
+  <p><strong>Address <%= i + 1 %></strong></p>
+  <ul>
+    <li>zipcode: <%= address.zipcode %></li>
+    <li>city: <%= address.city %></li>
+    <li>street: <%= address.street %></li>
+    <li>tel: <%= address.tel %></li>
+  </ul>
+<% end %>
+
+<p><strong>Tasks</strong></p>
+<ul>
+  <% @user.tasks.each do |task| %>
+    <li><%= task.title %></li>
+  <% end %>
+</ul>
+
+<p><strong>Events</strong></p>
+<ul>
+  <% @user.events.each do |event| %>
+    <li><%= event.name %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
